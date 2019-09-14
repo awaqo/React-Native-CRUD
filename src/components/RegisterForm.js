@@ -12,7 +12,8 @@ import {
     Form,
     Button,
     Thumbnail,
-    Text
+    Text,
+    Label
 } from 'native-base';
 import Icon from 'react-native-vector-icons/Ionicons';
 import BgImage from '../images/background.jpg';
@@ -33,28 +34,35 @@ class RegisterForm extends Component {
                     <Text style={styles.textLogoStyle}>React Native</Text>
                 </View>
                 <Form style={styles.formRegisterStyle}>
-                    <Item style={styles.itemStyle}>
-                        <Icon name={Platform.OS === "android" ? "android-person" : "md-person"} size={26} color={'white'} />
+                    <Item floatingLabel>
+                        <Label>
+                            <Text style={styles.inputStyle}>Username</Text>
+                        </Label>
                         <Input style={styles.inputStyle}/>
                     </Item>
-                    <Item style={styles.itemStyle}>
-                        <Icon name={Platform.OS === "android" ? "android-lock" : "md-lock"} size={26} color={'white'} />
+                    <Item floatingLabel>
+                        <Label>
+                            <Text style={styles.inputStyle}>Email</Text>
+                        </Label>
+                        <Input style={styles.inputStyle}/>
+                    </Item>
+                    <Item floatingLabel>
+                        <Label>
+                            <Text style={styles.inputStyle}>Password</Text>
+                        </Label>
                         <Input style={styles.inputStyle} secureTextEntry={true}/>
-                    </Item>
-                    <Item style={styles.itemStyle}>
-                        <Icon name={Platform.OS === "android" ? "android-mail" : "md-mail"} size={26} color={'white'} />
-                        <Input style={styles.inputStyle}/>
                     </Item>
                 </Form>
                 <Button block info style={styles.footerBottomStyle}>
                     <Text>Register</Text>
                 </Button>
-                <View style={styles.footerSignUpStyle}>
-                    <TouchableOpacity>
-                        <Text style={styles.signUpStyle}>
-                            Already have an account? Sign in here
+                <View style={styles.footerSignUpStyle}> 
+                    <Text style={styles.signUpStyle}>
+                        Already have an account? 
+                        <Text onPress={() => this.props.navigation.navigate('LoginForm')} style={{color: '#2da9e3', fontSize: 12}}>
+                            Sign in here
                         </Text>
-                    </TouchableOpacity>
+                    </Text>
                 </View>
             </View>
         )
@@ -93,20 +101,20 @@ const styles = StyleSheet.create({
         marginTop: 5,
     },
     inputStyle: {
-        color: 'white',
-        marginBottom: 1,
-        marginLeft: 5,
+        color: '#ffffff',
+        marginBottom: 6,
         fontSize: 14
     },
     footerBottomStyle: {
-        marginTop: 70,
+        marginTop: 50,
         paddingTop: 10,
         marginLeft: 16,
-        marginRight: 16
+        marginRight: 16,
+        borderRadius: 6
     },
     footerSignUpStyle: {
         marginTop: 25,
-        alignItems: 'center'
+        alignItems: 'center',
     },
     signUpStyle: {
         color: '#ffffff',

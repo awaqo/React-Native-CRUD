@@ -1,19 +1,13 @@
-import React, { Component } from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 import LoginForm from './src/components/LoginForm';
 import RegisterForm from './src/components/RegisterForm';
+import WelcomeScreen from './src/components/WelcomeScreen';
 
-export default class App extends Component {
-  render(){
-    return(
-      <RegisterForm />
-    );
-  }
-}
+const AppNavigator = createStackNavigator({
+  WelcomeScreen: { screen: WelcomeScreen, navigationOptions: { header: null } },
+  LoginForm: { screen: LoginForm, navigationOptions: { header: null } },
+  RegisterForm: { screen: RegisterForm, navigationOptions: { header: null } },
+}, { initialRouteName: 'WelcomeScreen'} );
+
+export default createAppContainer(AppNavigator);

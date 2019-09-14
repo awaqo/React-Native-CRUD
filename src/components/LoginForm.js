@@ -52,7 +52,10 @@ class LoginForm extends Component{
                 <View style={styles.footerSignUpStyle}>
                     <TouchableOpacity>
                         <Text style={styles.signUpStyle}>
-                            Don't have an account? Register here
+                            Don't have an account? 
+                            <Text onPress={() => this.props.navigation.navigate('RegisterForm')} style={{color: '#2da9e3', fontSize: 12}}>
+                                Register here
+                            </Text>
                         </Text>
                     </TouchableOpacity>
                 </View>
@@ -95,10 +98,11 @@ const styles = StyleSheet.create({
         fontSize: 14
     },
     footerBottomStyle: {
-        marginTop: 26,
+        marginTop: 50,
         paddingTop: 10,
         marginLeft: 16,
-        marginRight: 16
+        marginRight: 16,
+        borderRadius: 6
     },
     footerSignUpStyle: {
         marginTop: 25,
